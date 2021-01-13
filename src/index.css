@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  /* background: linear-gradient(180deg, #000000 0%, #294475 58%, #007BFF 100%); */
+  background-attachment: fixed;
+  color: rgb(36, 30, 18);
+}
+
+.wrapper {
+  background: #fff;
+  /* -mox-box-shadow: 0 0 10px rgba(0,0,0,.3); */
+  /* -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3); */
+  /* box-shadow: 0 0 10px rgba(0,0,0,.3); */
+  margin: auto;
+  margin-top: 80px;
+  max-width: 960px;
+  padding: 2.25%; /* 18px / 800px */
+  width: 85%;
+  border-radius: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+.new-patient-form {
+  display: table;
+  margin: 10px;
+  padding: 5px;
+  border:rgb(203, 234, 255) solid;
+  border-radius: 10px;
+  width: 400px;
+}
+ /* .navbar-custom {
+
+ } */

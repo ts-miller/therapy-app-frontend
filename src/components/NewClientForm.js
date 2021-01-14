@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 import { addClient } from '../actions/index'
+import { connect } from 'react-redux'
 
 class NewClientForm extends Component {
     constructor(props) {
         super(props)
+
         this.state ={
             name: '',
             age: '',
@@ -22,7 +24,7 @@ class NewClientForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        addClient(this.state)
+        this.props.addClient(this.state)
         this.setState({
             name: '',
             age: '',
@@ -72,4 +74,4 @@ class NewClientForm extends Component {
     }
 }
 
-export default NewClientForm;
+export default connect(null, { addClient })(NewClientForm)

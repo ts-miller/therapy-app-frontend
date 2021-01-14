@@ -26,7 +26,7 @@ body {
   margin: auto;
   margin-top: 80px;
   max-width: 960px;
-  padding: 2.25%; /* 18px / 800px */
+  /* padding: 2.25%; 18px / 800px */
   width: 85%;
   border-radius: 5px;
 }

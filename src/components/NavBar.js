@@ -1,6 +1,6 @@
 import React from 'react'
-import { FormControl, Nav } from 'react-bootstrap'
-import { Navbar, Form, Button } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const NavBar = () => {
@@ -12,10 +12,6 @@ const NavBar = () => {
                 <Nav.Link as={Link} to="clients">Clients</Nav.Link>
                 <Nav.Link as={Link} to="goals">Goals</Nav.Link>
             </Nav>
-            <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-light">Search</Button>
-            </Form>
         </Navbar>
     )
 }

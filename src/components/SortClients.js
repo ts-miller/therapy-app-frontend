@@ -2,7 +2,7 @@ import React from 'react';
 
 const SortPatients = (props) => {
     return (
-        <div style={{alignContent: 'right'}}>
+        <div id="sort-clients">
             <label>Sort By:</label>
             <select value={props.value} onChange={props.selectNew}>
                 <option value='1'>Upcoming Visits</option>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
-import NewClientForm from '../components/NewClientForm'
-import SortPatients from '../components/SortPatients'
-import PatientsContainer from './PatientsContainer'
+import NewClientModal from '../components/NewClientModal'
+import SortClients from '../components/SortClients'
+import ClientsContainer from './ClientsContainer'
 import { connect } from 'react-redux'
+import { fetchClients } from '../actions/index'
 
 class ClientsPage extends Component {
     constructor() {
@@ -14,30 +15,26 @@ class ClientsPage extends Component {
         }
     }
 
-    toggleForm = () => {this.setState({ showForm: !this.state.showForm })}
+    componentDidMount() {
+        this.props.fetchClients()
+    }
 
     render() {
-        const { showForm } = this.state
-        const clientForm = <NewClientForm closeForm={this.toggleForm} />
-        const newClientButton = <Button onClick={this.toggleForm}>New Client</Button>
         return (
-            <div>
+            <>
                 <div>
-                    { (showForm) ? clientForm : newClientButton }
-                    <SortPatients value={this.state.sortValue} 
-                        selectNew={e => this.setState({ sortValue: e.target.value })}
-                    />
+                    <div>
+                        <Button id='new-client-btn' onClick={()=>this.setState({showForm: true})}>New Client</Button>
+                        <SortClients value={this.state.sortValue} 
+                            selectNew={e => this.setState({ sortValue: e.target.value })}
+                        />
+                    </div>
+                    <ClientsContainer sort={this.state.sortValue}/>
                 </div>
-                <PatientsContainer clients={this.props.clients}/>
-            </div>
+                <NewClientModal show={this.state.showForm} onHide={()=>this.setState({showForm: false})} />
+            </>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        clients: state.clients
-    }
-}
-
-export default connect(mapStateToProps)(ClientsPage)
+export default connect(null, { fetchClients })(ClientsPage)

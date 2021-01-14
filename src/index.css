@@ -35,14 +35,22 @@ body {
   text-align: center;
 }
 
-.new-patient-form {
+.new-client-form {
   display: table;
   margin: 10px;
   padding: 10px;
   border:rgb(154 154 154) solid;
   border-radius: 10px;
-  max-width: 400px;
+  max-width: 450px;
 }
- /* .navbar-custom {
 
- } */
+#new-client-btn {
+  margin-left: 80px;
+  margin-bottom: 20px;
+}
+
+#sort-clients {
+  float: right;
+  margin-top: 6px;
+  margin-right: 80px;
+}

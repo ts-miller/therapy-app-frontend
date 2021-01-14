@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import clientsReducer from './clientsReducer'
+import clients from './clientsReducer'
 
 export default combineReducers({
-    clientsReducer
+    clients
 })

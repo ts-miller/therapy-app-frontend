@@ -1,5 +1,7 @@
-const clientsReducer = (state = [], action) => {
+const clients = (state = [], action) => {
     switch (action.type) {
+        // case 'START_ADDING_CLIENT':
+        //     console.log('adding client')
         case 'ADD_CLIENT':
             return [ ...state, action.payload ]
         default:
@@ -7,4 +9,4 @@ const clientsReducer = (state = [], action) => {
     }
 }
 
-export default clientsReducer
+export default clients

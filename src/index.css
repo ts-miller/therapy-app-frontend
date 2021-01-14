@@ -38,10 +38,10 @@ body {
 .new-patient-form {
   display: table;
   margin: 10px;
-  padding: 5px;
-  border:rgb(203, 234, 255) solid;
+  padding: 10px;
+  border:rgb(154 154 154) solid;
   border-radius: 10px;
-  width: 400px;
+  max-width: 400px;
 }
  /* .navbar-custom {
 

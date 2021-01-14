@@ -3,7 +3,7 @@ import { FormControl, Nav } from 'react-bootstrap'
 import { Navbar, Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const NavBar = (props) => {
+const NavBar = () => {
     return (
         <Navbar bg='primary' variant='dark' fixed="top">
             <Navbar.Brand href="#home">Logo</Navbar.Brand>
@@ -17,13 +17,6 @@ const NavBar = (props) => {
                 <Button variant="outline-light">Search</Button>
             </Form>
         </Navbar>
-        // <nav>
-        //     <div>
-        //         <NavLink to='/'> Home </NavLink>
-        //         <NavLink to='/clients'> Clients </NavLink>
-        //         <NavLink to='/goals'> Progress </NavLink>
-        //     </div>
-        // </nav>
     )
 }
 

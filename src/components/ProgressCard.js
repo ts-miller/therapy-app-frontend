@@ -1,27 +1,26 @@
 import React, { Component } from 'react'
 import { CanvasJSChart } from 'canvasjs-react-charts'
+import { Card } from 'react-bootstrap'
 
 class ProgressCard extends Component {
-    constructor() {
-        super()
-        this.toggleDataSeries = this.toggleDataSeries.bind(this)
-    }
+    // constructor() {
+    //     super()
+    //     this.toggleDataSeries = this.toggleDataSeries.bind(this)
+    // }
 
-    toggleDataSeries(e){
-        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-            e.dataSeries.visible = false
-        } else {
-            e.dataSeries.visible = true
-        }
-        this.chart.render()
-    }
+    // toggleDataSeries(e){
+    //     if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+    //         e.dataSeries.visible = false
+    //     } else {
+    //         e.dataSeries.visible = true
+    //     }
+    //     this.chart.render()
+    // }
 
     render() {
         const options = {
             theme: "light2",
             animationEnabled: true,
-            title: { text: "Progress VS Pain"},
-            subtitles: [{ text: "" }],
             axisX: { title: "Date"},
             axisY: {
                 title: "Percent of Motion",
@@ -66,12 +65,13 @@ class ProgressCard extends Component {
             }]
         }
         return (
-            <div>
-                <image alt='Patient Picture'/>
-                <h3>{'Patient Name'}</h3>
-                <CanvasJSChart options={options}
-                    onRef={ref => this.chart = ref} />
-            </div>
+            <Card>
+                <Card.Body>
+                    <Card.Title><a href='/client/2'>{'Client Name'}</a></Card.Title>
+                    <CanvasJSChart options={options} onRef={ref => this.chart = ref} />
+                </Card.Body>
+                
+            </Card>
         )
     }
 }

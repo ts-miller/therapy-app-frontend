@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import NavBar from './components/NavBar'
-import HomePage from './containers/HomePage'
+// import NavBar from './components/NavBar'
 import ClientsPage from './containers/ClientsPage'
-import ProgressPage from './containers/ProgressPage'
-// import './index.css'
-
+import ClientShow from './containers/ClientShow'
 
 class App extends Component {
 
@@ -13,12 +10,11 @@ class App extends Component {
     return (
       <div className='wrapper'>
       <Router>
-      <NavBar/>
+      {/* <NavBar/> */}
         <div>
           <Switch>
-            <Route exact path='/' component={ HomePage } />
-            <Route exact path='/clients' component={ ClientsPage } />
-            <Route exact path='/goals' component={ ProgressPage } />
+            <Route exact path='/' component={ ClientsPage } />
+            <Route exact path='/clients/:id' render={ props => <ClientShow {...props} />} />
             <Redirect to='/' />
           </Switch>
         </div>

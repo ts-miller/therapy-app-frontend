@@ -1,21 +1,21 @@
 import React from 'react';
 import { Button } from 'react-bootstrap'
-import NewVisitModal from './NewVisitModal';
+import { Link } from 'react-router-dom'
 
-const Client = ({ client, addApp, showModal }) => {
+const ClientRow = ({ client, showModal }) => {
+    
     const anyApp = client.appointments.length > 0
     const addAppBtn = <Button size="sm" onClick={showModal}>Add Appointment</Button>
-
-    let nextApp = (anyApp) ? client.appointments[0] : addAppBtn
 
     return (
         <>
             <tr>
                 <th>{client.id}</th>
-                <td>{client.first_name}</td>
-                <td>{client.last_name}</td>
+                <td><Link to={`/clients/${client.id}`}>{client.firstName}</Link></td>
+                <td>{client.lastName}</td>
                 <td>{client.age}</td>
-                <td>{nextApp}</td>
+                <td>{(anyApp) ? client.appointments[0].date : addAppBtn}</td>
+                <td>Selector</td>
             </tr>
 
 
@@ -23,4 +23,4 @@ const Client = ({ client, addApp, showModal }) => {
     );
 }
 
-export default Client;
+export default ClientRow;

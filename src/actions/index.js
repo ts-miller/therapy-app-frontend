@@ -1,19 +1,24 @@
+import humps from 'humps'
+
 export const fetchClients = () => {
     return (dispatch) => {
+        // dispatch({ type: 'LOADING' })
         return fetch('http://localhost:3000/clients')
             .then(resp => resp.json())
             .then(clients => {
-                dispatch({ type: 'FETCH_CLIENTS', payload: clients})
+                const camelizedClients = clients.map(client => humps.camelizeKeys(client))
+                dispatch({ type: 'FETCH_CLIENTS', payload: camelizedClients })
             })
     }
 }
 
 export const fetchAppointments = () => {
     return (dispatch) => {
+        // dispatch({ type: 'LOADING' })
         return fetch('http://localhost:3000/appointments')
             .then(resp => resp.json())
             .then(appointments => {
-                dispatch()
+                dispatch({ type: 'ADD_APPOINTMENTS', payload: appointments })
             })
     }
 }
@@ -25,7 +30,7 @@ export const addClient = client => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({client:client})
+            body: JSON.stringify({ client: humps.decamelizeKeys(client) })
         })
         .then(resp => resp.json())
         .then(client => {
@@ -41,11 +46,11 @@ export const addAppointment = app => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({appointment:app})
+            body: JSON.stringify({appointment: humps.decamelizeKeys(app)})
         })
         .then(resp => resp.json())
         .then(app => {
-            dispatch({ type: 'ADD_APPOINTMENT', payload: app})
+            dispatch({ type: 'ADD_APPOINTMENT', payload: humps.camelizeKeys(app)})
         })
     }
 }

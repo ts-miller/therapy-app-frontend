@@ -1,8 +1,10 @@
 const clients = (state = [], action) => {
     switch (action.type) {
-        // case 'START_ADDING_CLIENT':
-        //     console.log('adding client')
+        case 'LOADING':
+            console.log('loading stuff...')
+            return [{ loading: true }]
         case 'FETCH_CLIENTS':
+            console.log('got stuff!')
             return [ ...action.payload ]
         case 'ADD_CLIENT':
             return [ ...state, action.payload ]

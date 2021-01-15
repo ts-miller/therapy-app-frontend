@@ -8,7 +8,8 @@ class NewClientForm extends Component {
         super(props)
 
         this.state ={
-            name: '',
+            firstName: '',
+            lastName: '',
             age: '',
             summary: ''
         }
@@ -26,8 +27,8 @@ class NewClientForm extends Component {
         event.preventDefault()
         this.props.addClient(this.state)
         this.setState({
-            first_name: '',
-            last_name: '',
+            firstName: '',
+            lastName: '',
             age: '',
             location: '',
             summary: '',   
@@ -50,17 +51,17 @@ class NewClientForm extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <Row>
-                            <Col><Form.Group controlId="first_name">
+                            <Col><Form.Group controlId="firstName">
                                 <Form.Label>First Name</Form.Label>
                                 <Form.Control type="input" 
                                     onChange={this.handleChange} 
-                                    value={this.state.first_name}/>
+                                    value={this.state.firstName}/>
                             </Form.Group></Col>
-                            <Col><Form.Group controlId='last_name'>
+                            <Col><Form.Group controlId='lastName'>
                                 <Form.Label>Last Name</Form.Label>
                                 <Form.Control type="input"
                                     onChange={this.handleChange} 
-                                    value={this.state.last_name} />
+                                    value={this.state.lastName} />
                             </Form.Group></Col>
                         </Row>
                         <Row>

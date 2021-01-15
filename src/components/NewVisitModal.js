@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import { addAppointment } from '../actions/index'
 
 class NewVisitModal extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state ={
+            clientId: (!!props.client) ? props.client.id : null,
             date: '',
             time: ''
         }
     }
 
     handleChange = event => {
+        debugger
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -18,9 +22,17 @@ class NewVisitModal extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
+        this.props.addAppointment(this.state)
         this.setState({
             date: '',
             time: ''
+        })
+        this.props.onHide()
+    }
+
+    componentDidMount() {
+        this.setState({
+            clientId: this.props.client.id
         })
     }
     
@@ -33,7 +45,7 @@ class NewVisitModal extends Component {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        {`Add Visit for ${this.props.client}`}
+                        {`Add Visit for ${this.props.client.firstName}`}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -66,4 +78,4 @@ class NewVisitModal extends Component {
     }
 }
 
-export default NewVisitModal;
+export default connect(null, { addAppointment })(NewVisitModal)

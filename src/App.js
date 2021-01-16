@@ -20,8 +20,8 @@ class App extends Component {
           <NavBar />
           <Switch>
             <Route exact path='/' component={ ClientsPage } />
-            <Route exact path='/clients/:id' render={ ClientShow } />
-            <Route exact path='/clients/:id/edit' render={ ClientEdit } />
+            <Route exact path='/clients/:id' component={ ClientShow } />
+            <Route exact path='/clients/:id/edit' component={ ClientEdit } />
             <Route exact path='/appointments' component={ AppointmentsPage } />
             <Redirect to='/' />
           </Switch>

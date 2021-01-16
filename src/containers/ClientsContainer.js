@@ -27,8 +27,7 @@ class ClientsContainer extends Component {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Last Name</th>
-                                <th>First Name</th>
+                                <th>Name</th>
                                 <th>Age</th>
                                 <th>Next Appointment</th>
                                 <th>Options</th>

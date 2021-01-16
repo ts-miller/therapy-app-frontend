@@ -63,11 +63,11 @@ export const deleteApp = app => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ client: humps.decamelizeKeys(app) })
+            body: JSON.stringify({ appointment: humps.decamelizeKeys(app) })
         })
-        .then(resp => {resp.json()})
+        .then(resp => resp.json())
         .then(app => {
-            dispatch({ type: 'DELETE_CLIENT', payload: app})
+            dispatch({ type: 'DELETE_APPOINTMENT', payload: app})
         })
     }
 }

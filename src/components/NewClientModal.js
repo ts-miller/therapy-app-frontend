@@ -24,16 +24,21 @@ class NewClientForm extends Component {
     }
 
     handleSubmit = event => {
+        const { firstName, lastName, age, summary } = this.state
         event.preventDefault()
-        this.props.addClient(this.state)
-        this.setState({
-            firstName: '',
-            lastName: '',
-            age: '',
-            location: '',
-            summary: '',   
-        })
-        this.props.onHide()
+        if (firstName && lastName && age && summary) {
+            this.props.addClient(this.state)
+            this.setState({
+                firstName: '',
+                lastName: '',
+                age: '',
+                location: '',
+                summary: '',   
+            })
+            this.props.onHide()
+        } else {
+            alert('Please fill out all fields.')
+        }
     }
 
     render() {

@@ -20,14 +20,20 @@ class NewVisitModal extends Component {
     }
 
     handleSubmit = event => {
+        const { clientId, date, time } = this.state
         event.preventDefault()
-        this.props.addAppointment(this.state)
-        this.setState({
-            clientId: '',
-            date: '',
-            time: ''
-        })
-        this.props.onHide()
+        if (clientId && date && time) {
+            this.props.addAppointment(this.state)
+            this.setState({
+                clientId: '',
+                date: '',
+                time: ''
+            })
+            this.props.onHide()
+        } else {
+            alert('Please fill out all fields.')
+        }
+        
     }
     
     render() {  
@@ -50,7 +56,7 @@ class NewVisitModal extends Component {
                                         name="clientId"
                                         value={this.state.clientId}
                                         onChange={this.handleChange}>
-                                <option selected value='' disabled="disabled">Choose Client...</option>
+                                <option defaultValue value='' disabled="disabled">Choose Client...</option>
                                 {this.props.clients.map(client => {
                                     return (
                                         <option key={client.id} value={client.id}>

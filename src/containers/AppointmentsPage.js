@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import NewAppointmentModal from '../components/NewAppointmentModal'
 import AppointmentsContainer from './AppointmentsContainer'
+import { fetchAppointments, fetchClients } from '../actions/index'
 
 class AppointmentsPage extends Component {
     constructor() {
@@ -10,6 +11,11 @@ class AppointmentsPage extends Component {
         this.state = {
             showForm: false
         }
+    }
+
+    componentDidMount() {
+        this.props.fetchClients()
+        this.props.fetchAppointments()
     }
 
     render() {
@@ -33,4 +39,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(AppointmentsPage)
+export default connect(mapStateToProps, { fetchClients, fetchAppointments })(AppointmentsPage)

@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { deleteApp } from '../actions';
+import { deleteApp } from '../actions/index';
 import { connect } from 'react-redux'
 
-const AppointmentRow = ({ appointment, client }) => {
+const AppointmentRow = ({ appointment, deleteApp, client }) => {
 
     const handleClick = () => {
-        debugger
         deleteApp(appointment)
     }
 

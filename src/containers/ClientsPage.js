@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
+import { connect } from 'react-redux'
 import NewClientModal from '../components/NewClientModal'
 import ClientsContainer from './ClientsContainer'
+import { fetchAppointments, fetchClients } from '../actions/index'
 
 class ClientsPage extends Component {
     constructor() {
         super()
         this.state = {
-            sortValue: '1',
             showForm: false
         }
+    }
+
+    componentDidMount() {
+        this.props.fetchClients()
+        this.props.fetchAppointments()
     }
 
     render() {
@@ -25,4 +31,4 @@ class ClientsPage extends Component {
     }
 }
 
-export default ClientsPage
+export default connect(null, { fetchAppointments, fetchClients })(ClientsPage)

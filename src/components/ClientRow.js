@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { deleteClient } from '../actions';
 import { connect } from 'react-redux'
 import { OverlayTrigger, Popover, Button } from 'react-bootstrap'
+import ClientPopover from './ClientPopover'
 
 const ClientRow = ({ client, deleteClient, index }) => {
     
@@ -12,24 +13,19 @@ const ClientRow = ({ client, deleteClient, index }) => {
         deleteClient(client)
     }
 
-    const showPopover = client => {
-        return (
-            <Popover id='popover-basic'>
-                <Popover.Title as='h3'>{`location: ${client.location}`}</Popover.Title>
-                <Popover.Content>
-                    {client.summary}
-                </Popover.Content>
-            </Popover>
-        )
-    }
+    // const showPopover = client => {
+    //     return (
+            
+    //     )
+    // }
 
     return (
         <>
             <tr>
                 <th>{index}</th>
                 <td>
-                    <OverlayTrigger trigger="click" placement="right" overlay={showPopover(client)}>
-                        <Button>{`${client.firstName} ${client.lastName}`}</Button>
+                    <OverlayTrigger trigger="click" placement="right" overlay={ClientPopover(client)} >
+                        <Button variant='info'>{`${client.firstName} ${client.lastName}`}</Button>
                     </OverlayTrigger>
                 </td>
                 <td>{client.age}</td>

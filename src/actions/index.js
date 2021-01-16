@@ -17,8 +17,9 @@ export const fetchAppointments = () => {
         // dispatch({ type: 'LOADING' })
         return fetch('http://localhost:3000/appointments')
             .then(resp => resp.json())
-            .then(appointments => {
-                dispatch({ type: 'ADD_APPOINTMENTS', payload: appointments })
+            .then(apps => {
+                const camelizedApps = apps.map(app => humps.camelizeKeys(app))
+                dispatch({ type: 'FETCH_APPOINTMENTS', payload: camelizedApps })
             })
     }
 }
@@ -51,6 +52,22 @@ export const deleteClient = client => {
         .then(resp => resp.json())
         .then(client => {
             dispatch({ type: 'DELETE_CLIENT', payload: client})
+        })
+    }
+}
+
+export const deleteApp = app => {
+    return (dispatch) => {
+        return fetch(`http://localhost:3000/appointments/${app.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ client: humps.decamelizeKeys(app) })
+        })
+        .then(resp => {resp.json()})
+        .then(app => {
+            dispatch({ type: 'DELETE_CLIENT', payload: app})
         })
     }
 }

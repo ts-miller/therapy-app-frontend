@@ -7,14 +7,13 @@ class NewVisitModal extends Component {
     constructor(props) {
         super(props)
         this.state ={
-            clientId: (!!props.client) ? props.client.id : null,
+            clientId: '',
             date: '',
             time: ''
         }
     }
 
     handleChange = event => {
-        debugger
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -24,16 +23,11 @@ class NewVisitModal extends Component {
         event.preventDefault()
         this.props.addAppointment(this.state)
         this.setState({
+            clientId: '',
             date: '',
             time: ''
         })
         this.props.onHide()
-    }
-
-    componentDidMount() {
-        this.setState({
-            clientId: this.props.client.id
-        })
     }
     
     render() {  
@@ -45,11 +39,27 @@ class NewVisitModal extends Component {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        {`Add Visit for ${this.props.client.firstName}`}
+                        Add Appointment
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={this.handleSubmit}>
+                        <Form.Group>
+                            <Form.Label>Client</Form.Label>
+                            <Form.Control as='select'
+                                        name="clientId"
+                                        value={this.state.clientId}
+                                        onChange={this.handleChange}>
+                                <option selected value='' disabled="disabled">Choose Client...</option>
+                                {this.props.clients.map(client => {
+                                    return (
+                                        <option key={client.id} value={client.id}>
+                                            {`${client.firstName} ${client.lastName}`}
+                                        </option>
+                                    )
+                                })}
+                            </Form.Control>
+                        </Form.Group>
                         <Row>
                             <Col>
                                 <Form.Group controlId='date'>

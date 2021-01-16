@@ -1,6 +1,4 @@
 import React from 'react';
-import { DropdownButton } from 'react-bootstrap'
-import Dropdown from 'react-bootstrap/Dropdown'
 import { Link } from 'react-router-dom'
 import { deleteClient } from '../actions';
 import { connect } from 'react-redux'

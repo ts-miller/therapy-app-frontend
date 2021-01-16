@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Table } from 'react-bootstrap'
 import ClientRow from '../components/ClientRow'
 import { connect } from 'react-redux'
+import NoItems from '../components/NoItems'
 
 class ClientsContainer extends Component {
     constructor(props) {
@@ -14,6 +15,11 @@ class ClientsContainer extends Component {
     }
 
     render() {
+        if (!this.props.clients) {
+            return (
+                <NoItems item="Clients" />
+            )
+        }
         return (
             <>
                 <Container>
@@ -24,15 +30,13 @@ class ClientsContainer extends Component {
                                 <th>Last Name</th>
                                 <th>First Name</th>
                                 <th>Age</th>
-                                <th>Next Visit</th>
+                                <th>Next Appointment</th>
                                 <th>Options</th>
                             </tr>
                         </thead>
                         <tbody>
                             {this.props.clients.map((client, index) => {
                                 return <ClientRow key={ client.id } 
-                                        handleClick={this.handleClick} 
-                                        show={this.state.modalShow}
                                         client={ client } 
                                         index={ index + 1 }
                                         />

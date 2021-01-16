@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 import NewClientModal from '../components/NewClientModal'
 import ClientsContainer from './ClientsContainer'
-import { connect } from 'react-redux'
-import { fetchClients } from '../actions/index'
 
 class ClientsPage extends Component {
     constructor() {
@@ -14,16 +12,12 @@ class ClientsPage extends Component {
         }
     }
 
-    componentDidMount() {
-        this.props.fetchClients()
-    }
-
     render() {
         return (
             <>
                 <div>
-                    <Button id='new-client-btn' onClick={()=>this.setState({showForm: true})}>New Client</Button>
-                    <ClientsContainer sort={this.state.sortValue}/>
+                    <Button id='new-btn' onClick={()=>this.setState({showForm: true})}>New Client</Button>
+                    <ClientsContainer />
                 </div>
                 <NewClientModal show={this.state.showForm} onHide={()=>this.setState({showForm: false})} />
             </>
@@ -31,4 +25,4 @@ class ClientsPage extends Component {
     }
 }
 
-export default connect(null, { fetchClients })(ClientsPage)
+export default ClientsPage

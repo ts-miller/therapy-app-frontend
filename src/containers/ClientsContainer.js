@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Table } from 'react-bootstrap'
 import ClientRow from '../components/ClientRow'
-import NewVisitModal from '../components/NewVisitModal'
 import { connect } from 'react-redux'
 
 class ClientsContainer extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             modalShow: false,
             client: {},
@@ -30,17 +29,17 @@ class ClientsContainer extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.props.clients.map(client => {
+                            {this.props.clients.map((client, index) => {
                                 return <ClientRow key={ client.id } 
-                                        showModal={() => this.setState({ modalShow: true, client: client })} 
-                                        client={ client } />
+                                        handleClick={this.handleClick} 
+                                        show={this.state.modalShow}
+                                        client={ client } 
+                                        index={ index + 1 }
+                                        />
                             })}
                         </tbody>
                     </Table>
                 </Container>
-                <NewVisitModal client={this.state.client} 
-                    show={this.state.modalShow} 
-                    onHide={() => this.setState({modalShow: false})} />
             </>
         );
     }

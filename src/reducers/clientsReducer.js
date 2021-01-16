@@ -8,6 +8,9 @@ const clients = (state = [], action) => {
             return [ ...action.payload ]
         case 'ADD_CLIENT':
             return [ ...state, action.payload ]
+        case 'DELETE_CLIENT':
+            const newClients = state.filter( client => client.id !== action.payload.id)
+            return [ ...newClients ]
         default:
             return state
     }

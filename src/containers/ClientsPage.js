@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 import NewClientModal from '../components/NewClientModal'
-import SortClients from '../components/SortClients'
 import ClientsContainer from './ClientsContainer'
 import { connect } from 'react-redux'
 import { fetchClients } from '../actions/index'
@@ -23,12 +22,7 @@ class ClientsPage extends Component {
         return (
             <>
                 <div>
-                    <div>
-                        <Button id='new-client-btn' onClick={()=>this.setState({showForm: true})}>New Client</Button>
-                        <SortClients value={this.state.sortValue} 
-                            selectNew={e => this.setState({ sortValue: e.target.value })}
-                        />
-                    </div>
+                    <Button id='new-client-btn' onClick={()=>this.setState({showForm: true})}>New Client</Button>
                     <ClientsContainer sort={this.state.sortValue}/>
                 </div>
                 <NewClientModal show={this.state.showForm} onHide={()=>this.setState({showForm: false})} />

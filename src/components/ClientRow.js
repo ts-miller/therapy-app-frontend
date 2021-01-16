@@ -1,26 +1,32 @@
 import React from 'react';
-import { Button } from 'react-bootstrap'
+import { DropdownButton } from 'react-bootstrap'
+import Dropdown from 'react-bootstrap/Dropdown'
 import { Link } from 'react-router-dom'
+import { deleteClient } from '../actions';
+import { connect } from 'react-redux'
 
-const ClientRow = ({ client, showModal }) => {
+const ClientRow = ({ client, deleteClient, index }) => {
     
     const anyApp = client.appointments.length > 0
-    const addAppBtn = <Button size="sm" onClick={showModal}>Add Appointment</Button>
 
+    const handleClick = () => {
+        deleteClient(client)
+    }
     return (
         <>
             <tr>
-                <th>{client.id}</th>
-                <td><Link to={`/clients/${client.id}`}>{client.firstName}</Link></td>
+                <th>{index}</th>
+                <td>{client.firstName}</td>
                 <td>{client.lastName}</td>
                 <td>{client.age}</td>
-                <td>{(anyApp) ? client.appointments[0].date : addAppBtn}</td>
-                <td>Selector</td>
+                <td>{(anyApp) ? client.appointments[0].date : "N/A"}</td>
+                <td>
+                    <Link to={`client/${client.id}/edit`}>Edit</Link>{" || "}
+                    <Link to='/clients' onClick={handleClick}>Delete</Link>
+                </td>
             </tr>
-
-
         </>
     );
 }
 
-export default ClientRow;
+export default connect(null, { deleteClient })(ClientRow)

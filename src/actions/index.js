@@ -34,7 +34,23 @@ export const addClient = client => {
         })
         .then(resp => resp.json())
         .then(client => {
-            dispatch({ type: 'ADD_CLIENT', payload: client })
+            dispatch({ type: 'ADD_CLIENT', payload: humps.camelizeKeys(client) })
+        })
+    }
+}
+
+export const deleteClient = client => {
+    return (dispatch) => {
+        return fetch(`http://localhost:3000/clients/${client.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ client: humps.decamelizeKeys(client) })
+        })
+        .then(resp => resp.json())
+        .then(client => {
+            dispatch({ type: 'DELETE_CLIENT', payload: client})
         })
     }
 }

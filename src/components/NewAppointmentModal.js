@@ -22,14 +22,21 @@ class NewVisitModal extends Component {
     handleSubmit = event => {
         const { clientId, date, time } = this.state
         event.preventDefault()
+        const dateTime = date.concat(` ${time}`)
+        const isFuture = new Date(dateTime).getTime() > new Date().getTime()
+
         if (clientId && date && time) {
-            this.props.addAppointment(this.state)
-            this.setState({
-                clientId: '',
-                date: '',
-                time: ''
-            })
-            this.props.onHide()
+            if (isFuture) {
+                this.props.addAppointment(this.state)
+                this.setState({
+                    clientId: '',
+                    date: '',
+                    time: ''
+                })
+                this.props.onHide()
+            } else {
+                alert('Please select date and time in the future.')
+            }
         } else {
             alert('Please fill out all fields.')
         }

@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import ClientsPage from './containers/ClientsPage'
-import ClientShow from './containers/ClientShow'
 import AppointmentsPage from './containers/AppointmentsPage'
 import { fetchClients, fetchAppointments } from './actions/index'
-import ClientEdit from './containers/ClientEdit'
 import { connect } from 'react-redux'
 import NavBar from './components/NavBar'
 
@@ -20,8 +18,6 @@ class App extends Component {
           <NavBar />
           <Switch>
             <Route exact path='/' component={ ClientsPage } />
-            <Route exact path='/clients/:id' component={ ClientShow } />
-            <Route exact path='/clients/:id/edit' component={ ClientEdit } />
             <Route exact path='/appointments' component={ AppointmentsPage } />
             <Redirect to='/' />
           </Switch>

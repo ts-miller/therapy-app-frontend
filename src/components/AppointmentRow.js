@@ -5,16 +5,16 @@ import { connect } from 'react-redux'
 
 const AppointmentRow = ({ appointment, deleteApp, client }) => {
 
-    const handleClick = () => {
-        deleteApp(appointment)
-    }
+    const handleClick = () => deleteApp(appointment)
+
+    const handleClient = () => (client) ? `${client.firstName} ${client.lastName}` : ''
 
     return (
         <tr>
             <th>{appointment.id}</th>
             <td>{appointment.date}</td>
             <td>{appointment.time}</td>
-            <td>{`${client.firstName} ${client.lastName}`}</td>
+            <td>{handleClient()}</td>
             <td><Link to='/appointments' onClick={handleClick}>Delete</Link></td>
         </tr>
     );

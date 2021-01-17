@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { deleteClient } from '../actions';
 import { connect } from 'react-redux'
-import { OverlayTrigger, Popover, Button } from 'react-bootstrap'
+import { OverlayTrigger, Button } from 'react-bootstrap'
 import ClientPopover from './ClientPopover'
 
 const ClientRow = ({ client, deleteClient, index }) => {
@@ -12,12 +12,6 @@ const ClientRow = ({ client, deleteClient, index }) => {
     const handleClick = () => {
         deleteClient(client)
     }
-
-    // const showPopover = client => {
-    //     return (
-            
-    //     )
-    // }
 
     return (
         <>

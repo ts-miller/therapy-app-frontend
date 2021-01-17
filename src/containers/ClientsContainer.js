@@ -30,7 +30,7 @@ class ClientsContainer extends Component {
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Next Appointment</th>
-                                <th>Options</th>
+                                <th>Delete?</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -24,7 +24,7 @@ const AppointmentsContainer = ({ appointments, clients }) => {
                             <th>Date</th>
                             <th>Time</th>
                             <th>Name</th>
-                            <th>Options</th>
+                            <th>Delete?</th>
                         </tr>
                     </thead>
                     <tbody>

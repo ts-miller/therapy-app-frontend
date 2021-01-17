@@ -1,5 +1,7 @@
 # Portfolio React Therapy Client Tracker
 
+[LINK TO BACKEND](https://github.com/ts-miller/therapy-app-backend)
+
 React Therapy Client Tracker is a single page React.js application with client-side routing that keeps track of clients and their corresponding appointments. It stores and fetches data from a Rails backend which can be accessed in the repo in the link above.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

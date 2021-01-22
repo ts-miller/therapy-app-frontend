@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
-import { addAppointment } from '../actions/index'
+import { addAppointment, fetchClients } from '../actions/index'
 
 class NewVisitModal extends Component {
     constructor(props) {
@@ -34,6 +34,7 @@ class NewVisitModal extends Component {
                     time: ''
                 })
                 this.props.onHide()
+                this.props.fetchClients()
             } else {
                 alert('Please select date and time in the future.')
             }
@@ -46,7 +47,8 @@ class NewVisitModal extends Component {
     render() {  
         return (
             <Modal
-                {...this.props}
+                show={this.props.show}
+                onHide={this.props.onHide}
                 aria-labelledby='contained-modal-title-vcenter'
                 centered
             >
@@ -101,4 +103,4 @@ class NewVisitModal extends Component {
     }
 }
 
-export default connect(null, { addAppointment })(NewVisitModal)
+export default connect(null, { addAppointment, fetchClients })(NewVisitModal)

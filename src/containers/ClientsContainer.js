@@ -15,7 +15,7 @@ class ClientsContainer extends Component {
     }
 
     render() {
-        if (!this.props.clients) {
+        if (!this.props.clients.length) {
             return (
                 <NoItems item="Clients" />
             )
@@ -38,6 +38,7 @@ class ClientsContainer extends Component {
                                 return <ClientRow key={ client.id } 
                                         client={ client } 
                                         index={ index + 1 }
+                                        appointments={ this.props.appointments }
                                         />
                             })}
                         </tbody>
@@ -50,7 +51,8 @@ class ClientsContainer extends Component {
 
 const mapStateToProps = state => {
     return {
-        clients: state.clients
+        clients: state.clients,
+        appointments: state.appointments
     }
 }
 

@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import NewClientModal from '../components/NewClientModal'
 import ClientsContainer from './ClientsContainer'
-import { fetchAppointments, fetchClients } from '../actions/index'
+import { fetchAppointments, fetchClients, addClient } from '../actions/index'
 
 class ClientsPage extends Component {
     constructor() {
@@ -13,10 +13,10 @@ class ClientsPage extends Component {
         }
     }
 
-    componentDidMount() {
-        this.props.fetchClients()
-        this.props.fetchAppointments()
-    }
+    // componentDidMount() {
+    //     this.props.fetchClients()
+    //     this.props.fetchAppointments()
+    // }
 
     render() {
         return (
@@ -25,10 +25,13 @@ class ClientsPage extends Component {
                     <Button id='new-btn' onClick={()=>this.setState({showForm: true})}>New Client</Button>
                     <ClientsContainer />
                 </div>
-                <NewClientModal show={this.state.showForm} onHide={()=>this.setState({showForm: false})} />
+                <NewClientModal show={this.state.showForm} 
+                    onHide={()=>this.setState({showForm: false})}
+                    addClient={this.props.addClient}
+                    fetchAppointments={this.props.fetchClients} />
             </>
         )
     }
 }
 
-export default connect(null, { fetchAppointments, fetchClients })(ClientsPage)
+export default connect(null, { fetchAppointments, fetchClients, addClient })(ClientsPage)

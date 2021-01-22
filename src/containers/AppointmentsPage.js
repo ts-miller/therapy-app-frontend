@@ -13,10 +13,10 @@ class AppointmentsPage extends Component {
         }
     }
 
-    componentDidMount() {
-        this.props.fetchClients()
-        this.props.fetchAppointments()
-    }
+    // componentDidMount() {
+    //     this.props.fetchClients()
+    //     this.props.fetchAppointments()
+    // }
 
     render() {
         return (

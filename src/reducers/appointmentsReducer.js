@@ -25,6 +25,10 @@ const appointments = (state = [], action) => {
             newApps = state.filter( app => app.id !== action.payload.id)
             sortedApps = sortApps(newApps)
             return [ ...sortedApps ]
+        case 'DELETE_CLIENT_APPOINTMENTS':
+            newApps = state.filter( app => app.clientId !== action.payload.client.id)
+            sortedApps = sortApps(newApps)
+            return [ ...sortedApps ]
         default:
             return state
     }

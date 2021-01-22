@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Modal, Row, Col } from 'react-bootstrap'
-import { addClient } from '../actions/index'
-import { connect } from 'react-redux'
+// import { addClient } from '../actions/index'
+// import { connect } from 'react-redux'
 
 class NewClientForm extends Component {
     constructor(props) {
@@ -36,6 +36,7 @@ class NewClientForm extends Component {
                 summary: '',   
             })
             this.props.onHide()
+            this.props.fetchAppointments()
         } else {
             alert('Please fill out all fields.')
         }
@@ -44,7 +45,8 @@ class NewClientForm extends Component {
     render() {
         return (
             <Modal
-                {...this.props }
+                show={this.props.show}
+                onHide={this.props.onHide}
                 aria-labelledby='contained-modal-title-vcenter'
                 centered    
             >
@@ -98,4 +100,4 @@ class NewClientForm extends Component {
     }
 }
 
-export default connect(null, { addClient })(NewClientForm)
+export default NewClientForm

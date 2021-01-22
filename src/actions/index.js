@@ -52,6 +52,7 @@ export const deleteClient = client => {
         .then(resp => resp.json())
         .then(client => {
             dispatch({ type: 'DELETE_CLIENT', payload: client})
+            dispatch({ type: 'DELETE_CLIENT_APPOINTMENTS', payload: client})
         })
     }
 }

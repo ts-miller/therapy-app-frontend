@@ -5,7 +5,7 @@ import AppointmentRow from '../components/AppointmentRow'
 import NoItems from '../components/NoItems'
 
 const AppointmentsContainer = ({ appointments, clients }) => {
-    if (!appointments) {
+    if (!appointments.length) {
         return (
             <>
                 <Container>
